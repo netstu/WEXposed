@@ -8,7 +8,7 @@
         android:layout_width="50dp"
         android:layout_height="50dp"
         android:contentDescription="@string/filter_title"
-        android:src="@android:drawable/ic_menu_view" />
+        android:src="@drawable/ic_menu_filter" />
 
     <ImageButton
         android:id="@+id/btnPermsFilter"

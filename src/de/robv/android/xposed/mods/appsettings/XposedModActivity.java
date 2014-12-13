@@ -578,13 +578,13 @@ public class XposedModActivity extends Activity {
 
 				LinearLayout entriesView = (LinearLayout) filterDialog.findViewById(R.id.filter_entries);
 				filterComponents = new HashMap<String, FilterItemComponent>();
-				for (SettingInfo setting : settings) {
-					FilterItemComponent component = new FilterItemComponent(XposedModActivity.this, setting.label, null, null, null);
-					component.setLayoutParams(new LinearLayout.LayoutParams(LayoutParams.MATCH_PARENT, LayoutParams.WRAP_CONTENT));
-					component.setFilterState(setting.filter);
-					entriesView.addView(component);
-					filterComponents.put(setting.settingKey, component);
-				}
+//				for (SettingInfo setting : settings) {
+//					FilterItemComponent component = new FilterItemComponent(XposedModActivity.this, setting.label, null, null, null);
+//					component.setLayoutParams(new LinearLayout.LayoutParams(LayoutParams.MATCH_PARENT, LayoutParams.WRAP_CONTENT));
+//					component.setFilterState(setting.filter);
+//					entriesView.addView(component);
+//					filterComponents.put(setting.settingKey, component);
+//				}
 
 				((FilterItemComponent) filterDialog.findViewById(R.id.fltAppType)).setFilterState(filterAppType);
 				((FilterItemComponent) filterDialog.findViewById(R.id.fltAppState)).setFilterState(filterAppState);
@@ -612,8 +612,8 @@ public class XposedModActivity extends Activity {
 						filterAppType = FilterState.ALL;
 						filterAppState = FilterState.ALL;
 						filterActive = FilterState.ALL;
-						for (SettingInfo setting : settings)
-							setting.filter = FilterState.ALL;
+//						for (SettingInfo setting : settings)
+//							setting.filter = FilterState.ALL;
 
 						filterDialog.dismiss();
 						appListAdapter.getFilter().filter(nameFilter);
@@ -625,8 +625,8 @@ public class XposedModActivity extends Activity {
 						filterAppType = ((FilterItemComponent) filterDialog.findViewById(R.id.fltAppType)).getFilterState();
 						filterAppState = ((FilterItemComponent) filterDialog.findViewById(R.id.fltAppState)).getFilterState();
 						filterActive = ((FilterItemComponent) filterDialog.findViewById(R.id.fltActive)).getFilterState();
-						for (SettingInfo setting : settings)
-							setting.filter = filterComponents.get(setting.settingKey).getFilterState();
+//						for (SettingInfo setting : settings)
+//							setting.filter = filterComponents.get(setting.settingKey).getFilterState();
 
 						filterDialog.dismiss();
 						appListAdapter.getFilter().filter(nameFilter);
