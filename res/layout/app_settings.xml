@@ -3,6 +3,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:layout_marginLeft="10dp"
+    android:layout_marginRight="10dp"
     android:orientation="vertical" >
 
     <RelativeLayout
@@ -42,50 +44,25 @@
             android:layout_height="wrap_content"
             android:orientation="vertical" >
 
-            <LinearLayout
-                android:layout_width="match_parent"
+            <Button
+                android:id="@+id/btnListAds"
+                android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal" >
+                android:text="@string/settings_listads" />
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/settings_dpi" >
-                </TextView>
+            <Switch
+                android:id="@+id/swtHttpBlock"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/settings_block_http" />
 
-                <EditText
-                    android:id="@+id/txtDPI"
-                    android:layout_width="0dip"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:ems="3"
-                    android:imeOptions="actionDone|flagNavigateNext"
-                    android:inputType="number" >
-                </EditText>
+            <Switch
+                android:id="@+id/swtLocationChange"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/settings_change_loc" />
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/settings_fontscale" >
-                </TextView>
-
-                <EditText
-                    android:id="@+id/txtFontScale"
-                    android:layout_width="0dip"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:ems="3"
-                    android:imeOptions="actionDone|flagNavigateNext"
-                    android:inputType="number" >
-                </EditText>
-
-                <Button
-                    android:id="@+id/btnListRes"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/settings_listres" />
-            </LinearLayout>
-
+            <!--
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -110,7 +87,7 @@
                     android:text="@string/settings_xlargeres" />
             </LinearLayout>
 
-            <CheckBox
+             <CheckBox
                 android:id="@+id/chkResOnWidgets"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -302,10 +279,11 @@
                     android:layout_height="wrap_content"
                     android:text="@string/settings_legacy_menu" />
             </LinearLayout>
+            -->
 
             <Button
                 android:id="@+id/btnPermissions"
-                android:layout_width="wrap_content"
+                android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
                 android:text="@string/settings_permissions" />
         </LinearLayout>

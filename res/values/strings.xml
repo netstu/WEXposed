@@ -1,8 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_mod_summary">Set generic configurations on a per-app basis:
-DPI; Override loaded resouces; Locale; Fullscreen;
-Resident in memory; Orientation; Revoke Permissions; &#8230;</string>
+    <string name="app_mod_summary">WhatEver Ads in Apps requests can be modified. </string>
 
 
     <!-- Main screen -->
@@ -66,7 +64,7 @@ is enabled in its configuration!</string>
     <string name="settings_title">Settings</string>
     <string name="settings_dpi">DPI</string>
     <string name="settings_fontscale">Font scale</string>
-    <string name="settings_listres">List res.</string>
+    <string name="settings_listads">List Ads</string>
     <string name="settings_screen">Screen (dp)</string>
     <string name="settings_xlargeres">xlarge res.</string>
     <string name="settings_resonwidgets">Apply res to widgets</string>
@@ -116,7 +114,7 @@ is enabled in its configuration!</string>
     <string name="recents_title">Recent Applications</string>
 
     <!-- List resources -->
-    <string name="res_title">Resources</string>
+    <string name="res_title">Ads</string>
     <string name="res_noentries">No resources found</string>
     <string name="res_failedtoload">Failed to load APK contents</string>
 
@@ -136,6 +134,11 @@ Really go back and discard changes?</string>
     <string name="settings_apply_detail">Also kill the application so when it\'s relaunched it uses the new settings?</string>
 
 
+    <!-- Tweak settings -->
+    <string name="settings_block_http">Block Http</string>
+    <string name="settings_change_loc">Change Location</string>   
+    
+    
     <!-- Filter dialog -->
     <string name="filter_title">Filter</string>
     <string name="filter_all">All</string>
