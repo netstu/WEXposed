@@ -1,4 +1,4 @@
-package de.robv.android.xposed.mods.appsettings.hooks;
+package com.samsung.wexposed.hooks;
 
 import static de.robv.android.xposed.XposedBridge.hookAllConstructors;
 import static de.robv.android.xposed.XposedBridge.hookMethod;
@@ -26,10 +26,12 @@ import android.view.Window;
 import android.view.WindowManager;
 import android.view.inputmethod.EditorInfo;
 import android.view.inputmethod.InputConnection;
+
+import com.samsung.wexposed.Common;
+import com.samsung.wexposed.XposedMod;
+
 import de.robv.android.xposed.XC_MethodHook;
 import de.robv.android.xposed.XposedBridge;
-import de.robv.android.xposed.mods.appsettings.Common;
-import de.robv.android.xposed.mods.appsettings.XposedMod;
 
 
 public class Activities {

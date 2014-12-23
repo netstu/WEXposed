@@ -1,4 +1,4 @@
-package de.robv.android.xposed.mods.appsettings.settings;
+package com.samsung.wexposed.settings;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -51,10 +51,10 @@ import android.widget.Switch;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import de.robv.android.xposed.mods.appsettings.Common;
-import de.robv.android.xposed.mods.appsettings.R;
+import com.samsung.wexposed.R;
 
 import com.samsung.bin2liu.addetector.Detector;
+import com.samsung.wexposed.Common;
 
 @SuppressLint("WorldReadableFiles")
 public class ApplicationSettings extends Activity {

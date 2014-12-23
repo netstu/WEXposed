@@ -1,4 +1,4 @@
-package de.robv.android.xposed.mods.appsettings.settings;
+package com.samsung.wexposed.settings;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -15,7 +15,7 @@ import android.widget.ArrayAdapter;
 import android.widget.Filter;
 import android.widget.Filterable;
 import android.widget.TextView;
-import de.robv.android.xposed.mods.appsettings.R;
+import com.samsung.wexposed.R;
 
 /*
  * Adapter to feed the list of permission entries

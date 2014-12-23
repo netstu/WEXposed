@@ -1,4 +1,4 @@
-package de.robv.android.xposed.mods.appsettings.settings;
+package com.samsung.wexposed.settings;
 
 import java.util.Collections;
 import java.util.Comparator;
@@ -20,7 +20,7 @@ import android.widget.Button;
 import android.widget.CompoundButton;
 import android.widget.ListView;
 import android.widget.Switch;
-import de.robv.android.xposed.mods.appsettings.R;
+import com.samsung.wexposed.R;
 
 
 /**

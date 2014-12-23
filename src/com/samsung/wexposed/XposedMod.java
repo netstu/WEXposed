@@ -1,4 +1,4 @@
-package de.robv.android.xposed.mods.appsettings;
+package com.samsung.wexposed;
 
 
 import static de.robv.android.xposed.XposedHelpers.findAndHookMethod;
@@ -9,7 +9,9 @@ import static de.robv.android.xposed.XposedHelpers.setAdditionalInstanceField;
 import static de.robv.android.xposed.XposedHelpers.setFloatField;
 import static de.robv.android.xposed.XposedHelpers.setIntField;
 import static de.robv.android.xposed.XposedHelpers.setObjectField;
+
 import java.util.Locale;
+
 import android.annotation.SuppressLint;
 import android.annotation.TargetApi;
 import android.app.AndroidAppHelper;
@@ -29,6 +31,10 @@ import android.view.Display;
 import android.view.Surface;
 import android.view.SurfaceHolder;
 import android.view.ViewConfiguration;
+
+import com.samsung.wexposed.hooks.Activities;
+import com.samsung.wexposed.hooks.PackagePermissions;
+
 import de.robv.android.xposed.IXposedHookLoadPackage;
 import de.robv.android.xposed.IXposedHookZygoteInit;
 import de.robv.android.xposed.XC_MethodHook;
@@ -36,8 +42,6 @@ import de.robv.android.xposed.XC_MethodReplacement;
 import de.robv.android.xposed.XSharedPreferences;
 import de.robv.android.xposed.XposedBridge;
 import de.robv.android.xposed.callbacks.XC_LoadPackage.LoadPackageParam;
-import de.robv.android.xposed.mods.appsettings.hooks.Activities;
-import de.robv.android.xposed.mods.appsettings.hooks.PackagePermissions;
 
 public class XposedMod implements IXposedHookZygoteInit, IXposedHookLoadPackage {
 

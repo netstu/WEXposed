@@ -1,4 +1,4 @@
-package de.robv.android.xposed.mods.appsettings;
+package com.samsung.wexposed;
 
 import static android.content.pm.ActivityInfo.SCREEN_ORIENTATION_FULL_SENSOR;
 import static android.content.pm.ActivityInfo.SCREEN_ORIENTATION_FULL_USER;
@@ -12,9 +12,12 @@ import static android.content.pm.ActivityInfo.SCREEN_ORIENTATION_SENSOR_PORTRAIT
 import static android.content.pm.ActivityInfo.SCREEN_ORIENTATION_UNSPECIFIED;
 import static android.content.pm.ActivityInfo.SCREEN_ORIENTATION_USER_LANDSCAPE;
 import static android.content.pm.ActivityInfo.SCREEN_ORIENTATION_USER_PORTRAIT;
+
 import android.annotation.TargetApi;
 import android.app.Notification;
 import android.os.Build;
+
+import com.samsung.wexposed.R;
 
 @TargetApi(Build.VERSION_CODES.JELLY_BEAN)
 public class Common {

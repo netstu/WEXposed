@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res/de.robv.android.xposed.mods.appsettings"
+    xmlns:app="http://schemas.android.com/apk/res/com.samsung.wexposed"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:orientation="vertical"
@@ -17,7 +17,7 @@
             android:layout_height="wrap_content"
             android:orientation="vertical" >
 
-            <de.robv.android.xposed.mods.appsettings.FilterItemComponent
+            <com.samsung.wexposed.FilterItemComponent
                 android:id="@+id/fltAppType"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -25,7 +25,7 @@
                 app:overridden_label="@string/filter_user"
                 app:unchanged_label="@string/filter_system" />
 
-            <de.robv.android.xposed.mods.appsettings.FilterItemComponent
+            <com.samsung.wexposed.FilterItemComponent
                 android:id="@+id/fltAppState"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -33,7 +33,7 @@
                 app:overridden_label="@string/filter_enabled"
                 app:unchanged_label="@string/filter_disabled" />
 
-            <de.robv.android.xposed.mods.appsettings.FilterItemComponent
+            <com.samsung.wexposed.FilterItemComponent
                 android:id="@+id/fltActive"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"

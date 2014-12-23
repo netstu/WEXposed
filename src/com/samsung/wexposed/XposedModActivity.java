@@ -1,4 +1,4 @@
-package de.robv.android.xposed.mods.appsettings;
+package com.samsung.wexposed;
 
 import java.io.File;
 import java.io.FileInputStream;
@@ -68,9 +68,12 @@ import android.widget.SectionIndexer;
 import android.widget.SimpleAdapter;
 import android.widget.TextView;
 import android.widget.Toast;
-import de.robv.android.xposed.mods.appsettings.FilterItemComponent.FilterState;
-import de.robv.android.xposed.mods.appsettings.settings.ApplicationSettings;
-import de.robv.android.xposed.mods.appsettings.settings.PermissionsListAdapter;
+
+import com.samsung.wexposed.FilterItemComponent.FilterState;
+import com.samsung.wexposed.settings.ApplicationSettings;
+import com.samsung.wexposed.settings.PermissionsListAdapter;
+
+import com.samsung.wexposed.R;
 
 @SuppressLint("WorldReadableFiles")
 public class XposedModActivity extends Activity {

@@ -1,4 +1,4 @@
-package de.robv.android.xposed.mods.appsettings.hooks;
+package com.samsung.wexposed.hooks;
 
 import static de.robv.android.xposed.XposedHelpers.callMethod;
 import static de.robv.android.xposed.XposedHelpers.findAndHookMethod;
@@ -17,10 +17,12 @@ import android.content.IntentFilter;
 import android.content.pm.ApplicationInfo;
 import android.os.Build;
 import android.util.Log;
+
+import com.samsung.wexposed.Common;
+import com.samsung.wexposed.XposedMod;
+
 import de.robv.android.xposed.XC_MethodHook;
 import de.robv.android.xposed.XposedBridge;
-import de.robv.android.xposed.mods.appsettings.Common;
-import de.robv.android.xposed.mods.appsettings.XposedMod;
 
 public class PackagePermissions extends BroadcastReceiver {
 	private final Object pmSvc;

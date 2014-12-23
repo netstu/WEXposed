@@ -1,4 +1,4 @@
-package de.robv.android.xposed.mods.appsettings.settings;
+package com.samsung.wexposed.settings;
 
 import java.text.Collator;
 import java.util.Arrays;

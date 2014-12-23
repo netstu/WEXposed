@@ -1,4 +1,4 @@
-package de.robv.android.xposed.mods.appsettings;
+package com.samsung.wexposed;
 
 import android.content.Context;
 import android.content.res.TypedArray;
@@ -7,6 +7,8 @@ import android.view.LayoutInflater;
 import android.widget.LinearLayout;
 import android.widget.RadioGroup;
 import android.widget.TextView;
+
+import com.samsung.wexposed.R;
 
 /**
  * Composite component that displays a header and a triplet of radio buttons for
