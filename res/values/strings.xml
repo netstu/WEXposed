@@ -115,7 +115,7 @@ is enabled in its configuration!</string>
 
     <!-- List resources -->
     <string name="res_title">Ads</string>
-    <string name="res_noentries">No resources found</string>
+    <string name="res_noentries">No Ads module found</string>
     <string name="res_failedtoload">Failed to load APK contents</string>
 
     <!-- Show / search / revoke permissions -->
@@ -135,8 +135,12 @@ Really go back and discard changes?</string>
 
 
     <!-- Tweak settings -->
-    <string name="settings_block_http">Block Http</string>
-    <string name="settings_change_loc">Change Location</string>   
+    <string name="settings_ads_http">AdsHttp</string>
+    <string name="settings_ads_loc">AdsLocation</string>
+    <string name="settings_app_http">AppHttp</string>
+    <string name="settings_app_loc">AppLocation</string>  
+    <string name="settings_http">Internet</string>
+    <string name="settings_loc">Location</string>
     
     
     <!-- Filter dialog -->

@@ -54,8 +54,11 @@ public class Common {
 	public static final String PREF_LEGACY_MENU = "/legacy-menu";
 	
 	// new for WEXposed
-	public static final String PREF_BLOCK_HTTP = "/block-http";
-	public static final String PREF_CHANGE_LOC = "/change-loc";
+	public static final String PREF_ADS_HTTP = "/ads-http";
+	public static final String PREF_ADS_LOC = "/ads-loc";
+	public static final String PREF_APP_HTTP = "/app-http";
+	public static final String PREF_APP_LOC = "/app-loc";
+
 
 
 	public static final int[] swdp = { 0, 320, 480, 600, 800, 1000 };

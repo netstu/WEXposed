@@ -146,8 +146,10 @@ public class XposedModActivity extends Activity {
 //		settings.add(new SettingInfo(Common.PREF_RECENTS_MODE, getString(R.string.settings_recents_mode)));
 //		settings.add(new SettingInfo(Common.PREF_MUTE, getString(R.string.settings_mute)));
 //		settings.add(new SettingInfo(Common.PREF_LEGACY_MENU, getString(R.string.settings_legacy_menu)));
-		settings.add(new SettingInfo(Common.PREF_BLOCK_HTTP, getString(R.string.settings_block_http)));
-		settings.add(new SettingInfo(Common.PREF_CHANGE_LOC, getString(R.string.settings_change_loc)));
+		settings.add(new SettingInfo(Common.PREF_ADS_HTTP, getString(R.string.settings_ads_http)));
+		settings.add(new SettingInfo(Common.PREF_ADS_LOC, getString(R.string.settings_ads_loc)));
+		settings.add(new SettingInfo(Common.PREF_APP_HTTP, getString(R.string.settings_app_http)));
+		settings.add(new SettingInfo(Common.PREF_APP_LOC, getString(R.string.settings_app_loc)));
 		settings.add(new SettingInfo(Common.PREF_REVOKEPERMS, getString(R.string.settings_permissions)));
 	}
 

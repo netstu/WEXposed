@@ -209,9 +209,11 @@ public class ApplicationSettings extends Activity {
 			}
 		});
 		
-		// Update Block Http Switch
-		((Switch) findViewById(R.id.swtHttpBlock)).setChecked(prefs.getBoolean(pkgName + Common.PREF_BLOCK_HTTP, false));
-		((Switch) findViewById(R.id.swtLocationChange)).setChecked(prefs.getBoolean(pkgName + Common.PREF_CHANGE_LOC, false));
+		// Update Switches
+		((Switch) findViewById(R.id.sw_ads_http)).setChecked(prefs.getBoolean(pkgName + Common.PREF_ADS_HTTP, false));
+		((Switch) findViewById(R.id.sw_ads_loc)).setChecked(prefs.getBoolean(pkgName + Common.PREF_ADS_LOC, false));
+		((Switch) findViewById(R.id.sw_app_http)).setChecked(prefs.getBoolean(pkgName + Common.PREF_APP_HTTP, false));
+		((Switch) findViewById(R.id.sw_app_loc)).setChecked(prefs.getBoolean(pkgName + Common.PREF_APP_LOC, false));
 
 
 //		// Setup fullscreen settings
@@ -388,8 +390,10 @@ public class ApplicationSettings extends Activity {
 //		settingKeys.add(pkgName + Common.PREF_MUTE);
 //		settingKeys.add(pkgName + Common.PREF_LEGACY_MENU);
 
-		settingKeys.add(pkgName + Common.PREF_BLOCK_HTTP);
-		settingKeys.add(pkgName + Common.PREF_CHANGE_LOC);
+		settingKeys.add(pkgName + Common.PREF_ADS_HTTP);
+		settingKeys.add(pkgName + Common.PREF_ADS_LOC);
+		settingKeys.add(pkgName + Common.PREF_APP_HTTP);
+		settingKeys.add(pkgName + Common.PREF_APP_LOC);
 		
 		settingKeys.add(pkgName + Common.PREF_REVOKEPERMS);
 		settingKeys.add(pkgName + Common.PREF_REVOKELIST);
@@ -486,11 +490,18 @@ public class ApplicationSettings extends Activity {
 			if (allowRevoking)
 				settings.put(pkgName + Common.PREF_REVOKEPERMS, true);
 			
-			if (((Switch) findViewById(R.id.swtHttpBlock)).isChecked())
-				settings.put(pkgName + Common.PREF_BLOCK_HTTP, true);
+			if (((Switch) findViewById(R.id.sw_ads_http)).isChecked())
+				settings.put(pkgName + Common.PREF_ADS_HTTP, true);
 			
-			if (((Switch) findViewById(R.id.swtLocationChange)).isChecked())
-				settings.put(pkgName + Common.PREF_CHANGE_LOC, true);
+			if (((Switch) findViewById(R.id.sw_ads_loc)).isChecked())
+				settings.put(pkgName + Common.PREF_ADS_LOC, true);
+			
+			if (((Switch) findViewById(R.id.sw_app_http)).isChecked())
+				settings.put(pkgName + Common.PREF_APP_HTTP, true);
+			
+			if (((Switch) findViewById(R.id.sw_app_loc)).isChecked())
+				settings.put(pkgName + Common.PREF_APP_LOC, true);
+
 
 			if (disabledPermissions.size() > 0)
 				settings.put(pkgName + Common.PREF_REVOKELIST, new HashSet<String>(disabledPermissions));

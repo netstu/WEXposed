@@ -50,6 +50,58 @@
                 android:layout_height="wrap_content"
                 android:text="@string/settings_listads" />
 
+            <RelativeLayout
+                android:id="@+id/header_layout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="5sp" >
+
+                <!--
+             <Button
+            android:id="@+id/list_ads"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:layout_alignParentRight="true"
+            android:layout_gravity="fill"
+            android:layout_margin="0dip"
+            android:layout_marginBottom="0dip"
+            android:layout_marginTop="0dip"
+            android:padding="0dip"
+            android:paddingBottom="0dip"
+            android:paddingTop="0dip"
+            android:text="..." />
+                -->
+
+                <TextView
+                    android:id="@+id/header_ads"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_marginLeft="20sp"
+                    android:layout_marginRight="20sp"
+                    android:text="Block Ads"
+                    android:textSize="14sp" />
+
+                <TextView
+                    android:id="@+id/header_app"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="20sp"
+                    android:layout_marginRight="20sp"
+                    android:layout_toLeftOf="@id/header_ads"
+                    android:text="Block App"
+                    android:textSize="14sp" />
+
+                <TextView
+                    android:id="@+id/header_perms"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_toLeftOf="@id/header_app"
+                    android:text="Access Type"
+                    android:textSize="14sp" />
+            </RelativeLayout>
+
+            <!--
             <Switch
                 android:id="@+id/swtHttpBlock"
                 android:layout_width="fill_parent"
@@ -61,6 +113,55 @@
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
                 android:text="@string/settings_change_loc" />
+            -->
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" >
+
+                <Switch
+                    android:id="@+id/sw_ads_http"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true" />
+
+                <Switch
+                    android:id="@+id/sw_app_http"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_toLeftOf="@id/sw_ads_http" />
+
+                <TextView
+                    android:id="@+id/tv_http"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_toLeftOf="@id/sw_app_http"
+                    android:text="@string/settings_http" />
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" >
+
+                <Switch
+                    android:id="@+id/sw_ads_loc"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true" />
+
+                <Switch
+                    android:id="@+id/sw_app_loc"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_toLeftOf="@id/sw_ads_loc" />
+
+                <TextView
+                    android:id="@+id/tv_loc"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_toLeftOf="@id/sw_app_loc"
+                    android:text="@string/settings_loc" />
+            </RelativeLayout>
 
             <!--
             <LinearLayout
