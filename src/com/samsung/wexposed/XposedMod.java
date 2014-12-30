@@ -353,7 +353,7 @@ public class XposedMod implements IXposedHookZygoteInit, IXposedHookLoadPackage 
 		}
 
 		if (this_package.equals(lpparam.packageName)) {
-			findAndHookMethod("de.robv.android.xposed.mods.appsettings.XposedModActivity",
+			findAndHookMethod("com.samsung.wexposed.XposedModActivity",
 					lpparam.classLoader, "isModActive", XC_MethodReplacement.returnConstant(true));
 		}
 
