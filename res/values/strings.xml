@@ -60,11 +60,12 @@ is enabled in its configuration!</string>
     <string name="menu_playstore">Play Store</string>
 
 
+
     <!-- Settings screen -->
     <string name="settings_title">Settings</string>
     <string name="settings_dpi">DPI</string>
     <string name="settings_fontscale">Font scale</string>
-    <string name="settings_listads">List Ads</string>
+    <string name="settings_listads">List Ads.</string>
     <string name="settings_screen">Screen (dp)</string>
     <string name="settings_xlargeres">xlarge res.</string>
     <string name="settings_resonwidgets">Apply res to widgets</string>
@@ -109,11 +110,12 @@ is enabled in its configuration!</string>
     <string name="settings_npri_normal">Normal</string>
     <string name="settings_npri_low">Low</string>
     <string name="settings_npri_min">Min</string>
-
+    
+    
     <!-- Recent apps -->
     <string name="recents_title">Recent Applications</string>
 
-    <!-- List resources -->
+    <!-- List Ads -->
     <string name="res_title">Ads</string>
     <string name="res_noentries">No Ads module found</string>
     <string name="res_failedtoload">Failed to load APK contents</string>
@@ -133,14 +135,23 @@ Really go back and discard changes?</string>
     <string name="settings_apply_title">Apply settings</string>
     <string name="settings_apply_detail">Also kill the application so when it\'s relaunched it uses the new settings?</string>
 
+<!-- WEXposed settings -->
+    <string name="settings_ads_internet">AdsInternet</string>
+    <string name="settings_ads_location">AdsLocation</string>
+    <string name="settings_app_internet">AppInternet</string>
+    <string name="settings_app_location">AppLocation</string>
 
-    <!-- Tweak settings -->
-    <string name="settings_ads_http">AdsHttp</string>
-    <string name="settings_ads_loc">AdsLocation</string>
-    <string name="settings_app_http">AppHttp</string>
-    <string name="settings_app_loc">AppLocation</string>  
-    <string name="settings_http">Internet</string>
-    <string name="settings_loc">Location</string>
+    
+    <!-- Header -->
+    <string name="header_allow_ads">ALLOW ADS</string>
+    <string name="header_allow_app">ALLOW APP</string>
+    <string name="header_information">INFORMATION</string>
+    
+    <!-- Labels -->
+    <string name="label_internet">Internet</string>
+    <string name="label_location">Location</string>
+    <string name="label_contacts">Contacts</string>
+    <string name="label_sensor">Sensor</string>
     
     
     <!-- Filter dialog -->
