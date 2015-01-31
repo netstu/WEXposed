@@ -1,24 +1,5 @@
 package com.samsung.wexposed;
 
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.OutputStream;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Comparator;
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.Iterator;
-import java.util.LinkedList;
-import java.util.List;
-import java.util.Map;
-import java.util.Set;
-import java.util.TreeSet;
-import java.util.regex.Pattern;
-
 import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.app.ActivityManager;
@@ -61,7 +42,6 @@ import android.widget.Filter;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
-import android.widget.LinearLayout.LayoutParams;
 import android.widget.ListView;
 import android.widget.SearchView;
 import android.widget.SectionIndexer;
@@ -73,7 +53,24 @@ import com.samsung.wexposed.FilterItemComponent.FilterState;
 import com.samsung.wexposed.settings.ApplicationSettings;
 import com.samsung.wexposed.settings.PermissionsListAdapter;
 
-import com.samsung.wexposed.R;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.OutputStream;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.Iterator;
+import java.util.LinkedList;
+import java.util.List;
+import java.util.Map;
+import java.util.Set;
+import java.util.TreeSet;
+import java.util.regex.Pattern;
 
 @SuppressLint("WorldReadableFiles")
 public class XposedModActivity extends Activity {
@@ -95,7 +92,7 @@ public class XposedModActivity extends Activity {
 
 	private static File prefsFile = new File(Environment.getDataDirectory(),
 			"data/" + Common.MY_PACKAGE_NAME + "/shared_prefs/" + Common.PREFS + ".xml");
-	private static File backupPrefsFile = new File(Environment.getExternalStorageDirectory(), "AppSettings-Backup.xml");
+	private static File backupPrefsFile = new File(Environment.getExternalStorageDirectory(),  Common.MY_PACKAGE_NAME + "-Backup.xml");
 	private SharedPreferences prefs;
 
 	@Override

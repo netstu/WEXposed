@@ -394,7 +394,7 @@ public class ApplicationSettings extends Activity {
 		return super.onOptionsItemSelected(item);
 	}
 	
-	private List<String> readAdList(String filename) {
+	public List<String> readAdList(String filename) {
 		ArrayList<String> ret = new ArrayList<String>();
 		
 		BufferedReader reader = null;
