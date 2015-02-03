@@ -19,6 +19,7 @@ import android.os.Build;
 import android.util.Log;
 
 import com.samsung.wexposed.Common;
+import com.samsung.wexposed.WEXposedService;
 import com.samsung.wexposed.XposedMod;
 
 import de.robv.android.xposed.XC_MethodHook;
@@ -54,6 +55,9 @@ public class PackagePermissions extends BroadcastReceiver {
 							new IntentFilter(Common.MY_PACKAGE_NAME + ".UPDATE_PERMISSIONS"),
 							Common.MY_PACKAGE_NAME + ".BROADCAST_PERMISSION",
 							null);
+					
+//					Intent myIntent = new Intent(mContext, WEXposedService.class);
+//					mContext.startService(myIntent);
 				}
 			});
 
