@@ -60,6 +60,6 @@ public class Common {
 	public static final String INTENT_PACKAGE_NAME = "package";
 	public static final String INTENT_ALWAYS_EVENT = "always";
 	public static final String INTENT_ONCE_EVENT = "once";
-	public static final String INTENT_CATEGORY = "mobileprivacy";
+	public static final String INTENT_CATEGORY = "com.samsung.mobileprivacy";
 
 }

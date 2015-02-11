@@ -9,7 +9,6 @@ import android.content.Intent;
 import android.content.IntentFilter;
 import android.util.Log;
 
-import com.samsung.wexposed.WEXposedService;
 import com.samsung.wexposed.hooks.ActivityHooks;
 import com.samsung.wexposed.hooks.ContactsHooks;
 import com.samsung.wexposed.hooks.InternetHooks;
@@ -51,23 +50,18 @@ public class XposedMod implements IXposedHookZygoteInit, IXposedHookLoadPackage 
 		// if (!XposedMod.isActive(lpparam.packageName)) return;
 
 		XposedBridge.log("Loaded Package: " + lpparam.packageName);
-		//
-		// Intent resultIntent = new Intent();
-		// resultIntent.addCategory(Common.INTENT_CATEGORY);
-		// resultIntent.putExtra(Common.INTENT_PACKAGE_NAME,
-		// lpparam.packageName);
-		// resultIntent.putExtra(Common.INTENT_EVENT,
-		// Common.INTENT_START_EVENT);
-		// sendBroadcast(resultIntent);
+		if (Common.UI_PACKAGE_NAME.equals(lpparam.packageName) || Common.MY_PACKAGE_NAME.equals(lpparam.packageName))
+			return;
 
 		ActivityHooks.hook(lpparam);
 
-//		XposedBridge.log("package: " + lpparam.packageName + "==> launch activity: " + htLaunchActivity.get(lpparam.packageName));
+		// XposedBridge.log("package: " + lpparam.packageName +
+		// "==> launch activity: " + htLaunchActivity.get(lpparam.packageName));
 
-//		LocationHooks.hook(lpparam);
-//		InternetHooks.hook(lpparam);
-//		ContactsHooks.hook(lpparam);
-//		SensorHooks.hook(lpparam);
+		 LocationHooks.hook(lpparam);
+//		 InternetHooks.hook(lpparam);
+		 ContactsHooks.hook(lpparam);
+		 SensorHooks.hook(lpparam);
 
 	}
 
@@ -106,5 +100,4 @@ public class XposedMod implements IXposedHookZygoteInit, IXposedHookLoadPackage 
 		return prefs.getBoolean(Common.PREF_DEFAULT + sub, true);
 	}
 
-	
 }

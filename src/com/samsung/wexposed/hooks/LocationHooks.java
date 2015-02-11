@@ -23,7 +23,7 @@ public class LocationHooks {
 				protected void afterHookedMethod(MethodHookParam param) throws Throwable {
 
 					String packageName = AndroidAppHelper.currentPackageName();
-
+					XposedMod.prefs.reload();
 					if (!XposedMod.isActive(packageName, Common.PREF_APP + Common.PREF_LOCATION)) {
 						if (param.getResult() != null) {
 
@@ -43,6 +43,7 @@ public class LocationHooks {
 				@Override
 				protected void beforeHookedMethod(MethodHookParam param) throws Throwable {
 					String packageName = AndroidAppHelper.currentPackageName();
+					XposedMod.prefs.reload();
 					if (!XposedMod.isActive(packageName, Common.PREF_APP + Common.PREF_LOCATION)) {
 
 						Location loc = (Location) param.args[0];

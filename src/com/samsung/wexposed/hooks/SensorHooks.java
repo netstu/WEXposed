@@ -50,6 +50,7 @@ public class SensorHooks{
                                 Throwable {
                         	
                         	String packageName = AndroidAppHelper.currentPackageName();
+                        	XposedMod.prefs.reload();
         					if (!XposedMod.isActive(packageName, Common.PREF_SENSOR)) {
                             
 	//                            XposedBridge.log("   Hooked method: " + param.method);       

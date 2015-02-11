@@ -19,7 +19,6 @@ import android.os.Build;
 import android.util.Log;
 
 import com.samsung.wexposed.Common;
-import com.samsung.wexposed.WEXposedService;
 import com.samsung.wexposed.XposedMod;
 
 import de.robv.android.xposed.XC_MethodHook;
@@ -38,32 +37,31 @@ public class PackagePermissions extends BroadcastReceiver {
 	}
 
 	public static void initHooks() {
-		/* Hook to the PackageManager service in order to
-		 * - Listen for broadcasts to apply new settings and restart the app
-		 * - Intercept the permission granting function to remove disabled permissions
+		/*
+		 * Hook to the PackageManager service in order to - Listen for
+		 * broadcasts to apply new settings and restart the app - Intercept the
+		 * permission granting function to remove disabled permissions
 		 */
 		try {
 			final Class<?> clsPMS = findClass("com.android.server.pm.PackageManagerService", XposedMod.class.getClassLoader());
 
-			// Listen for broadcasts from the Settings part of the mod, so it's applied immediately
+			// Listen for broadcasts from the Settings part of the mod, so it's
+			// applied immediately
 			findAndHookMethod(clsPMS, "systemReady", new XC_MethodHook() {
 				@Override
-				protected void afterHookedMethod(MethodHookParam param)
-						throws Throwable {
+				protected void afterHookedMethod(MethodHookParam param) throws Throwable {
 					Context mContext = (Context) getObjectField(param.thisObject, "mContext");
-					mContext.registerReceiver(new PackagePermissions(param.thisObject),
-							new IntentFilter(Common.MY_PACKAGE_NAME + ".UPDATE_PERMISSIONS"),
-							Common.MY_PACKAGE_NAME + ".BROADCAST_PERMISSION",
-							null);
-					
-//					Intent myIntent = new Intent(mContext, WEXposedService.class);
-//					mContext.startService(myIntent);
+					mContext.registerReceiver(new PackagePermissions(param.thisObject), new IntentFilter(Common.MY_PACKAGE_NAME + ".UPDATE_PERMISSIONS"), Common.MY_PACKAGE_NAME + ".BROADCAST_PERMISSION", null);
+
+					// Intent myIntent = new Intent(mContext,
+					// WEXposedService.class);
+					// mContext.startService(myIntent);
 				}
 			});
 
-			// if the user has disabled certain permissions for an app, do as if the hadn't requested them
-			findAndHookMethod(clsPMS, "grantPermissionsLPw", "android.content.pm.PackageParser$Package", boolean.class,
-					new XC_MethodHook() {
+			// if the user has disabled certain permissions for an app, do as if
+			// the hadn't requested them
+			findAndHookMethod(clsPMS, "grantPermissionsLPw", "android.content.pm.PackageParser$Package", boolean.class, new XC_MethodHook() {
 				@SuppressWarnings("unchecked")
 				@Override
 				protected void beforeHookedMethod(MethodHookParam param) throws Throwable {
@@ -79,14 +77,13 @@ public class PackagePermissions extends BroadcastReceiver {
 					param.setObjectExtra("orig_requested_permissions", origRequestedPermissions);
 
 					ArrayList<String> newRequestedPermissions = new ArrayList<String>(origRequestedPermissions.size());
-					for (String perm: origRequestedPermissions) {
+					for (String perm : origRequestedPermissions) {
 						if (!disabledPermissions.contains(perm))
 							newRequestedPermissions.add(perm);
 						else
-							// you requested those internet permissions? I didn't read that, sorry
-							Log.w(Common.TAG, "Not granting permission " + perm
-									+ " to package " + pkgName
-									+ " because you think it should not have it");
+							// you requested those internet permissions? I
+							// didn't read that, sorry
+							Log.w(Common.TAG, "Not granting permission " + perm + " to package " + pkgName + " because you think it should not have it");
 					}
 
 					setObjectField(param.args[0], "requestedPermissions", newRequestedPermissions);
@@ -109,36 +106,60 @@ public class PackagePermissions extends BroadcastReceiver {
 	@Override
 	public void onReceive(Context context, Intent intent) {
 		try {
-			// The app broadcasted a request to update settings for a running app
+			// The app broadcasted a request to update settings for a running
+			// app
 
+			XposedBridge.log("=== onReceive: " + intent.toString());
 			// Validate the action being requested
 			if (!Common.ACTION_PERMISSIONS.equals(intent.getExtras().getString("action")))
 				return;
 
 			String pkgName = intent.getExtras().getString("Package");
 			boolean killApp = intent.getExtras().getBoolean("Kill", false);
+			XposedBridge.log("=== pkgName " + pkgName);
 
-			XposedMod.prefs.reload();
+//			XposedMod.prefs.reload();
 
-			Object pkgInfo;
-			synchronized (mPackages) {
-				pkgInfo = mPackages.get(pkgName);
-				callMethod(pmSvc, "grantPermissionsLPw", pkgInfo, true);
-				callMethod(mSettings, "writeLPr");
-			}
+//			Object pkgInfo;
+//			synchronized (mPackages) {
+//				pkgInfo = mPackages.get(pkgName);
+//				callMethod(pmSvc, "grantPermissionsLPw", pkgInfo, true);
+//				callMethod(mSettings, "writeLPr");
+//			}
 
-			// Apply new permissions if needed
-			if (killApp) {
-				try {
-					ApplicationInfo appInfo = (ApplicationInfo) getObjectField(pkgInfo, "applicationInfo");
-					if (Build.VERSION.SDK_INT <= 18)
-						callMethod(pmSvc, "killApplication", pkgName, appInfo.uid);
-					else
-						callMethod(pmSvc, "killApplication", pkgName, appInfo.uid, "apply App Settings");
-				} catch (Throwable t) {
-					XposedBridge.log(t);
+			if (!killApp) {
+				if ("ALL".equals(pkgName)) {
+					Set<String> keys;
+					synchronized (mPackages) {
+						keys = mPackages.keySet();
+					}
+					for (String s : keys) {
+						killApp(s);
+					}
+				} else {
+					killApp(pkgName);
 				}
 			}
+		} catch (Throwable t) {
+			XposedBridge.log(t);
+		}
+	}
+
+	public void killApp(String pkgName) {
+		Object pkgInfo;
+		synchronized (mPackages) {
+			pkgInfo = mPackages.get(pkgName);
+			callMethod(pmSvc, "grantPermissionsLPw", pkgInfo, true);
+			callMethod(mSettings, "writeLPr");
+		}
+
+		XposedBridge.log("=== killing app: " + pkgName);
+		try {
+			ApplicationInfo appInfo = (ApplicationInfo) getObjectField(pkgInfo, "applicationInfo");
+			if (Build.VERSION.SDK_INT <= 18)
+				callMethod(pmSvc, "killApplication", pkgName, appInfo.uid);
+			else
+				callMethod(pmSvc, "killApplication", pkgName, appInfo.uid, "apply App Settings");
 		} catch (Throwable t) {
 			XposedBridge.log(t);
 		}
