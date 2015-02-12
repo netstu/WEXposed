@@ -90,27 +90,27 @@ public class ActivityHooks {
 				// }
 			});
 
-			XposedBridge.hookAllMethods(activity, "onPause", new XC_MethodHook() {
-
-				@Override
-				protected void beforeHookedMethod(MethodHookParam param) {
-					
-					String hostPackageName = AndroidAppHelper.currentPackageName();
-					Context mContext = (Activity) param.thisObject;
-					
-					Intent resultIntent = new Intent();
-					resultIntent.addCategory(Common.INTENT_CATEGORY);
-					resultIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);   //necessary when starting activity from service
-
-					resultIntent.setAction(Common.INTENT_ONCE_EVENT);
-					resultIntent.putExtra(Common.INTENT_PACKAGE_NAME, hostPackageName);
-					resultIntent.putExtra(Common.INTENT_EVENT, Common.INTENT_ONCE_EVENT);
-					mContext.sendBroadcast(resultIntent);
-
-					XposedBridge.log("Sent intent: " + resultIntent.toString());
-					
-				}
-			});
+//			XposedBridge.hookAllMethods(activity, "onPause", new XC_MethodHook() {
+//
+//				@Override
+//				protected void beforeHookedMethod(MethodHookParam param) {
+//					
+//					String hostPackageName = AndroidAppHelper.currentPackageName();
+//					Context mContext = (Activity) param.thisObject;
+//					
+//					Intent resultIntent = new Intent();
+//					resultIntent.addCategory(Common.INTENT_CATEGORY);
+//					resultIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);   //necessary when starting activity from service
+//
+//					resultIntent.setAction(Common.INTENT_ONCE_EVENT);
+//					resultIntent.putExtra(Common.INTENT_PACKAGE_NAME, hostPackageName);
+//					resultIntent.putExtra(Common.INTENT_EVENT, Common.INTENT_ONCE_EVENT);
+//					mContext.sendBroadcast(resultIntent);
+//
+//					XposedBridge.log("Sent intent: " + resultIntent.toString());
+//					
+//				}
+//			});
 
 		} catch (Throwable e) {
 			XposedBridge.log(e);
