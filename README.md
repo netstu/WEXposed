@@ -1,7 +1,7 @@
-AppSettings
+WEXposed
 ===========
 
-A modification using the Xposed framework to change WhatEver the ads modules requests.
+An Xposed module developed to protect privacy from WhatEver Apps and Ads on Android.
 
 
 License
