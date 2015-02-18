@@ -52,6 +52,10 @@ public class Common {
 															  // setting
 	public static final String PREF_DEVICEINFO = "/deviceinfo"; // deviceinfo
 																// setting
+	
+	// added by Bo 2/17/2015
+	public static final String PREF_WIFI = "/wifi";	// wifi info setting
+
 
 	// intent constants
 	public static final String INTENT_EVENT = "event";
