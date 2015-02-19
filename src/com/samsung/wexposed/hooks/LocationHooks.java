@@ -29,9 +29,9 @@ public class LocationHooks {
 
 							XposedBridge.log("   Result location: " + param.getResult().toString());
 							Location loc = (Location) param.getResult();
-							// set location to San Antonio
-							loc.setLatitude(29.4241219);
-							loc.setLongitude(-98.4936282);
+							// set location to San Jose
+							loc.setLatitude(37.3382082);
+							loc.setLongitude(-121.8863286);
 
 							XposedBridge.log("==> [android] Result location is changed to: " + param.getResult().toString());
 						}
@@ -47,9 +47,9 @@ public class LocationHooks {
 					if (!XposedMod.isActive(packageName, Common.PREF_APP + Common.PREF_LOCATION)) {
 
 						Location loc = (Location) param.args[0];
-						// set location to San Antonio
-						loc.setLatitude(29.4241219);
-						loc.setLongitude(-98.4936282);
+						// set location to San Jose
+						loc.setLatitude(37.3382082);
+						loc.setLongitude(-121.8863286);
 
 						XposedBridge.log("==> [android] Result location is changed to: " + param.args[0]);
 

@@ -51,7 +51,7 @@ public class SensorHooks{
                         	
                         	String packageName = AndroidAppHelper.currentPackageName();
                         	XposedMod.prefs.reload();
-        					if (!XposedMod.isActive(packageName, Common.PREF_SENSOR)) {
+        					if (!XposedMod.isActive(packageName, Common.PREF_APP + Common.PREF_SENSOR)) {
                             
 	//                            XposedBridge.log("   Hooked method: " + param.method);       
 	//                            XposedBridge.log("   SensorEvent: handle=" + param.args[0]);
@@ -68,7 +68,7 @@ public class SensorHooks{
 	                            field.setAccessible(true);
 	                            XposedBridge.log("   Field: " + field.toString());
 	                            int handle = (Integer) param.args[0];
-	                            Sensor ss = ((SparseArray<Sensor>) field.get(0)).get(handle);                            
+	                            Sensor ss = ((SparseArray<Sensor>) field.get(0)).get(handle);
 	                            XposedBridge.log("   SensorEvent: sensor=" + ss);
 	                            if(ss.getType() == Sensor.TYPE_ACCELEROMETER){
 	                                ((float[]) param.args[1])[0] = 0;

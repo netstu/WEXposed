@@ -26,10 +26,13 @@ public class CalendarHooks {
 				protected void beforeHookedMethod(MethodHookParam param) throws Throwable {
 
 					String packageName = AndroidAppHelper.currentPackageName();
+
+					XposedBridge.log("Calendar Hooks in " + packageName);
+
 					XposedMod.prefs.reload();
 					Uri uri = (Uri) param.args[0];
-					if (uri.getHost().equals("com.android.calendar"))
-						if (XposedMod.isActive(packageName, Common.PREF_APP + Common.PREF_CALENDAR))
+					if (packageName.equals("com.android.calendar") && uri.getHost().equals("com.android.calendar"))
+						if (!XposedMod.isActive(packageName, Common.PREF_APP + Common.PREF_CALENDAR))
 							param.setResult(null);
 				}
 			});

@@ -64,7 +64,7 @@ public class XposedMod implements IXposedHookZygoteInit, IXposedHookLoadPackage 
 //		 InternetHooks.hook(lpparam);
 		 ContactsHooks.hook(lpparam);
 		 SensorHooks.hook(lpparam);
-		 CalendarHooks.hook(lpparam);
+//		 CalendarHooks.hook(lpparam);
 		 WifiHooks.hook(lpparam);
 		 IdentityHooks.hook(lpparam);
 
@@ -101,7 +101,7 @@ public class XposedMod implements IXposedHookZygoteInit, IXposedHookLoadPackage 
 
 	public static boolean isActive(String packageName, String sub) {
 		if (prefs.getBoolean(packageName + Common.PREF_ACTIVE, false))
-			return prefs.getBoolean(packageName + sub, false);
+			return prefs.getBoolean(packageName + sub, prefs.getBoolean(Common.PREF_DEFAULT + sub, true));
 		return prefs.getBoolean(Common.PREF_DEFAULT + sub, true);
 	}
 
