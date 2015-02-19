@@ -9,6 +9,7 @@ import android.net.wifi.ScanResult;
 import android.net.wifi.WifiInfo;
 
 import com.samsung.wexposed.Common;
+import com.samsung.wexposed.MovingAverage;
 import com.samsung.wexposed.XposedMod;
 
 import java.util.List;
@@ -19,6 +20,8 @@ import de.robv.android.xposed.XC_MethodHook.MethodHookParam;
 import de.robv.android.xposed.callbacks.XC_LoadPackage.LoadPackageParam;
 
 public class WifiHooks {
+	public static MovingAverage wifiOverhead_ns = new MovingAverage(Common.OVERHEAD_TEST_SIZE);
+
 	public static void hook(LoadPackageParam lpparam) {
 		try {
 			final Class<?> wifiInfo = findClass("android.net.wifi.WifiInfo", lpparam.classLoader);
@@ -26,6 +29,8 @@ public class WifiHooks {
 			XposedBridge.hookAllMethods(wifiInfo, "getSSID", new XC_MethodHook() {
 				@Override
 				protected void beforeHookedMethod(MethodHookParam param) throws Throwable {
+//					long start = System.nanoTime();
+					
 					String packageName = AndroidAppHelper.currentPackageName();
 					XposedMod.prefs.reload();
 					XposedBridge.log("Wifi Hooks in " + packageName);
@@ -34,12 +39,17 @@ public class WifiHooks {
 					if (!XposedMod.isActive(packageName, Common.PREF_APP + Common.PREF_WIFI))
 						param.setResult("FakeSSID"); // change the wifi ssid to
 						                             // a predefined string
+					
+//					long end = System.nanoTime();
+//					XposedBridge.log("### Average Overhead of Wifi Hooks (nano sec.): " + wifiOverhead_ns.next(end - start));
 				}
 			});
 
 			XposedBridge.hookAllMethods(wifiInfo, "getBSSID", new XC_MethodHook() {
 				@Override
 				protected void beforeHookedMethod(MethodHookParam param) throws Throwable {
+//					long start = System.nanoTime();
+
 					String packageName = AndroidAppHelper.currentPackageName();
 					XposedMod.prefs.reload();
 					XposedBridge.log("Wifi Hooks in " + packageName);
@@ -49,6 +59,9 @@ public class WifiHooks {
 					if (!XposedMod.isActive(packageName, Common.PREF_APP + Common.PREF_WIFI)) {
 						param.setResult("FakeBSSID");
 					}
+					
+//					long end = System.nanoTime();
+//					XposedBridge.log("### Average Overhead of Wifi Hooks (nano sec.): " + wifiOverhead_ns.next(end - start));
 				}
 			});
 
@@ -81,6 +94,8 @@ public class WifiHooks {
 				@SuppressWarnings("unchecked")
 				@Override
 				protected void afterHookedMethod(MethodHookParam param) throws Throwable {
+//					long start = System.nanoTime();
+
 					String packageName = AndroidAppHelper.currentPackageName();
 					XposedMod.prefs.reload();
 					XposedBridge.log("Wifi ScanResult Hook in " + packageName);
@@ -94,6 +109,9 @@ public class WifiHooks {
 						}
 						param.setResult(res);
 					}
+					
+//					long end = System.nanoTime();
+//					XposedBridge.log("### Average Overhead of Wifi Hooks (nano sec.): " + wifiOverhead_ns.next(end - start));
 				}
 			});
 

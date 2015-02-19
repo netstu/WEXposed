@@ -7,12 +7,14 @@ import android.location.Location;
 
 import com.samsung.wexposed.Common;
 import com.samsung.wexposed.XposedMod;
+import com.samsung.wexposed.MovingAverage;
 
 import de.robv.android.xposed.XC_MethodHook;
 import de.robv.android.xposed.XposedBridge;
 import de.robv.android.xposed.callbacks.XC_LoadPackage.LoadPackageParam;
 
 public class LocationHooks {
+	public static MovingAverage locOverhead_ns = new MovingAverage(Common.OVERHEAD_TEST_SIZE);
 
 	public static void hook(LoadPackageParam lpparam) {
 
@@ -21,27 +23,33 @@ public class LocationHooks {
 
 				@Override
 				protected void afterHookedMethod(MethodHookParam param) throws Throwable {
-
+//					long start = System.nanoTime();
 					String packageName = AndroidAppHelper.currentPackageName();
 					XposedMod.prefs.reload();
 					if (!XposedMod.isActive(packageName, Common.PREF_APP + Common.PREF_LOCATION)) {
 						if (param.getResult() != null) {
 
-							XposedBridge.log("   Result location: " + param.getResult().toString());
+							// XposedBridge.log("   Result location: " +
+							// param.getResult().toString());
 							Location loc = (Location) param.getResult();
 							// set location to San Jose
 							loc.setLatitude(37.3382082);
 							loc.setLongitude(-121.8863286);
 
-							XposedBridge.log("==> [android] Result location is changed to: " + param.getResult().toString());
+							// XposedBridge.log("==> [android] Result location is changed to: "
+							// + param.getResult().toString());
+
 						}
 					}
+//					long end = System.nanoTime();
+//					XposedBridge.log("### Average Overhead of Location Hooks (nano sec.): " + locOverhead_ns.next(end - start));
 				}
 			});
 
 			findAndHookMethod("android.location.LocationManager.ListenerTransport", lpparam.classLoader, "onLocationChanged", Location.class, new XC_MethodHook() {
 				@Override
 				protected void beforeHookedMethod(MethodHookParam param) throws Throwable {
+//					long start = System.nanoTime();
 					String packageName = AndroidAppHelper.currentPackageName();
 					XposedMod.prefs.reload();
 					if (!XposedMod.isActive(packageName, Common.PREF_APP + Common.PREF_LOCATION)) {
@@ -51,9 +59,10 @@ public class LocationHooks {
 						loc.setLatitude(37.3382082);
 						loc.setLongitude(-121.8863286);
 
-						XposedBridge.log("==> [android] Result location is changed to: " + param.args[0]);
-
+//						XposedBridge.log("==> [android] Result location is changed to: " + param.args[0]);
 					}
+//					long end = System.nanoTime();
+//					XposedBridge.log("### Average Overhead of Location Hooks (nano sec.): " + locOverhead_ns.next(end - start));
 				}
 			});
 

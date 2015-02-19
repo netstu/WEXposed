@@ -12,12 +12,13 @@ import android.database.Cursor;
 import android.net.Uri;
 
 import com.samsung.wexposed.Common;
+import com.samsung.wexposed.MovingAverage;
 import com.samsung.wexposed.XposedMod;
 
 public class ContactsHooks {
+	public static MovingAverage contactsOverhead_ns = new MovingAverage(Common.OVERHEAD_TEST_SIZE);
 
 	public static void hook(LoadPackageParam lpparam) {
-
 		try {
 			final Class<?> cResolver = findClass("android.content.ContentResolver", lpparam.classLoader);
 
@@ -29,7 +30,8 @@ public class ContactsHooks {
 			XposedBridge.hookAllMethods(cResolver, "query", new XC_MethodHook() {
 				@Override
 				protected void beforeHookedMethod(MethodHookParam param) throws Throwable {
-
+//					long start = System.nanoTime();
+					
 					String packageName = AndroidAppHelper.currentPackageName();
 					String likeStmt = "";
 
@@ -80,6 +82,9 @@ public class ContactsHooks {
 						}
 
 					}
+					
+//					long end = System.nanoTime();
+//					XposedBridge.log("### Average Overhead of Contacts Hooks (nano sec.): " + contactsOverhead_ns.next(end - start));
 				}
 			});
 

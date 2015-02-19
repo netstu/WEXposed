@@ -10,6 +10,8 @@ public class Common {
 	public static final String MY_PACKAGE_NAME = Common.class.getPackage().getName(); // "com.samsung.wexposed"
 	public static final String UI_PACKAGE_NAME = "com.samsung.mobileprivacy";
 
+	public static final int OVERHEAD_TEST_SIZE = 1000;		// test window size
+
 	public static final String ACTION_PERMISSIONS = "update_permissions";
 
 	public static final String PREFS = "PrivacySettings"; // setting file name

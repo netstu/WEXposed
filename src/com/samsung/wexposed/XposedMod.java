@@ -1,6 +1,7 @@
 package com.samsung.wexposed;
 
 import static de.robv.android.xposed.XposedHelpers.findAndHookMethod;
+
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.ContextWrapper;
@@ -9,6 +10,7 @@ import android.content.IntentFilter;
 import android.util.Log;
 
 import com.samsung.wexposed.hooks.ActivityHooks;
+import com.samsung.wexposed.hooks.AdsHooks;
 import com.samsung.wexposed.hooks.CalendarHooks;
 import com.samsung.wexposed.hooks.ContactsHooks;
 import com.samsung.wexposed.hooks.IdentityHooks;
@@ -67,6 +69,7 @@ public class XposedMod implements IXposedHookZygoteInit, IXposedHookLoadPackage 
 //		 CalendarHooks.hook(lpparam);
 		 WifiHooks.hook(lpparam);
 		 IdentityHooks.hook(lpparam);
+		 AdsHooks.hook(lpparam);
 
 	}
 
