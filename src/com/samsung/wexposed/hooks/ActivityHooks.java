@@ -4,20 +4,15 @@ import static de.robv.android.xposed.XposedHelpers.findClass;
 
 import android.app.Activity;
 import android.app.AndroidAppHelper;
-import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
-import android.content.IntentFilter;
 import android.content.pm.PackageManager;
-import android.util.Log;
 
 import com.samsung.wexposed.Common;
 
 import de.robv.android.xposed.XC_MethodHook;
 import de.robv.android.xposed.XposedBridge;
 import de.robv.android.xposed.callbacks.XC_LoadPackage.LoadPackageParam;
-
-import java.util.Hashtable;
 
 public class ActivityHooks {
 

@@ -47,7 +47,7 @@ public class SensorHooks {
 				@SuppressWarnings("unchecked")
 				@Override
 				protected void beforeHookedMethod(MethodHookParam param) throws Throwable {
-//					long start = System.nanoTime();
+					long start = System.nanoTime();
 
 					String packageName = AndroidAppHelper.currentPackageName();
 					XposedMod.prefs.reload();
@@ -86,8 +86,8 @@ public class SensorHooks {
 						}
 					}
 					
-//					long end = System.nanoTime();
-//					XposedBridge.log("### Average Overhead of Sensor Hooks (nano sec.): " + sensorOverhead_ns.next(end - start));
+					long end = System.nanoTime();
+					XposedBridge.log("### Average Overhead of Sensor Hooks (nano sec.): " + sensorOverhead_ns.next(end - start));
 				}
 
 			});

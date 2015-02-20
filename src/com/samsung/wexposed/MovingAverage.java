@@ -1,7 +1,5 @@
 package com.samsung.wexposed;
 
-import java.util.LinkedList;
-import java.util.Queue;
 
 public class MovingAverage {
     private double curAvg;
@@ -23,8 +21,6 @@ public class MovingAverage {
         if(full) w1 = window.length;
         
         long tmp = add(num);
-        
-         
         
         int w2 = curIndex;
         if(full) w2 = window.length;

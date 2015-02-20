@@ -2,28 +2,14 @@ package com.samsung.wexposed;
 
 import static de.robv.android.xposed.XposedHelpers.findAndHookMethod;
 
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.ContextWrapper;
-import android.content.Intent;
-import android.content.IntentFilter;
-import android.util.Log;
-
 import com.samsung.wexposed.hooks.ActivityHooks;
 import com.samsung.wexposed.hooks.AdsHooks;
-import com.samsung.wexposed.hooks.CalendarHooks;
 import com.samsung.wexposed.hooks.ContactsHooks;
 import com.samsung.wexposed.hooks.IdentityHooks;
-import com.samsung.wexposed.hooks.InternetHooks;
 import com.samsung.wexposed.hooks.LocationHooks;
 import com.samsung.wexposed.hooks.PackagePermissions;
 import com.samsung.wexposed.hooks.SensorHooks;
 import com.samsung.wexposed.hooks.WifiHooks;
-
-import java.util.Collections;
-import java.util.HashMap;
-import java.util.Hashtable;
-import java.util.List;
 
 import de.robv.android.xposed.IXposedHookLoadPackage;
 import de.robv.android.xposed.IXposedHookZygoteInit;
